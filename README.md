@@ -207,7 +207,11 @@ SSH into the control node and follow the steps below:
 
   - curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
   - Next, copy the [Filebeat config](https://drive.google.com/file/d/1ual8JzBz19v3mt29zC_AsKXyVCLuPP_2/view?usp=sharing_) file to /etc/ansible
-  - 
+
+  - Then update the *_filebeat-config.yml_* file to include the *_ELK private IP 10.1.0.4 from root by typing the following command: `nano /etc/ansible/filebeat-config.yml`
+  
+  - Now run the playbook using the following command: `ansible-playbook filebeat-playbook.yml` and then go to the [kibana](http://157.56.166.8:5601//app/kibana) website > Logs > select option to Add log data > System logs > 5:Module Status > verify ncoming data on kibana to ensure that the installation was successful.
+  
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
 
   - *_/etc/ansible/hosts file (IP of the VM)._*
