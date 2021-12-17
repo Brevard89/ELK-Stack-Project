@@ -169,19 +169,51 @@ We have installed the following Beats on these machines:
 
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat is used to collect log files from different servers and databases. Some examples include Apache and MySQL.
+
+![Filebeat dashboard](https://user-images.githubusercontent.com/89888435/146507008-41d8703c-9f68-45d7-940b-e844996a43ef.png)
+
+
+- Metricbeat is used to find and monitor statistical data of different virtual machines, memory and network statistics etc.
+
+- ![Metricbeat dashboard](https://user-images.githubusercontent.com/89888435/146507470-416ee63d-8b62-47a3-843e-d8bd2df14d94.png)
+
+- ![Web1 metrics](https://user-images.githubusercontent.com/89888435/146508161-342a4747-c72d-4cad-a2bc-389c7735c180.png)
+
+- ![Web2 metrics](https://user-images.githubusercontent.com/89888435/146508190-e39628c4-7820-4f63-9d2d-fc641bd7023f.png)
+
+- ![Web3 metrics](https://user-images.githubusercontent.com/89888435/146508209-bd0213fe-3f94-4b74-b935-64fa9f2ab65b.png)
+
 
 # Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Verify Public IP by navigating to [What Is My IP?](https://www.bing.com/search?q=what+is+my+ip&cvid=5ec222ff4441452bbaa4e727aa1afd64&aqs=edge.1.69i57j0l6j69i60l2.4480j0j9&FORM=ANAB01&PC=NMTS#:~:text=My%20IP%20Location-,https%3A//www.whatismyip.com,-IP%20address%20stands)
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+SSH into the control node and follow the steps below:
+- Copy the *_yml_* file to your *_ansible_* directory.
+- Update the config file to include *_remote users and what ports_*
+- Run the playbook, and navigate to the kibana website *_(your IP address:5601//app/kibana)_* to check that the installation worked as expected.
+
+## For the ELK VM
+
+- Copy the [Install ELK Playbook](https://drive.google.com/file/d/1QClVvT4iUz1Kin5TMzFwG7N-wXrbaLT_/view?usp=sharing)
+
+- Type and execut the following command: ansible-playbook `/etc/ansible/install-elk.yml`
+
+## For Filebeat
+
+- You need to download the Filebeat Playbook using the following command: `
+
+  - curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
+  - Next, copy the [Filebeat config](https://drive.google.com/file/d/1ual8JzBz19v3mt29zC_AsKXyVCLuPP_2/view?usp=sharing_) file to /etc/ansible
+  - 
+- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+
+  - *_/etc/ansible/hosts file (IP of the VM)._*
+
+- Which URL do you navigate to in order to check that the ELK server is running?
+   
+   - http://157.56.166.8:5601//app/kibana 
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
