@@ -21,7 +21,9 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - [Hosts Configuration](https://drive.google.com/file/d/1eVEFO-u99TojKEWgjAKKNIXcDg46hHDA/view?usp=sharing)
   - [Install ELK Playbook](https://drive.google.com/file/d/1QClVvT4iUz1Kin5TMzFwG7N-wXrbaLT_/view?usp=sharing)
   - [Filebeat Playbook](https://drive.google.com/file/d/1sz3g4Gtm9gEMovYkp3v6wPdYddnp6eXV/view?usp=sharing)
+  - [Filebeat Config](https://drive.google.com/file/d/1ual8JzBz19v3mt29zC_AsKXyVCLuPP_2/view?usp=sharing_)
   - [Metricbeat Playbook](https://drive.google.com/file/d/1oKPTBp19XYLJAHs_uChDH0Inlp1EnXt0/view?usp=sharing)
+  - [Metricbeat Config](https://drive.google.com/file/d/1z8jfHl7Jdy_5upxaoSPv7q9IdxH0XpNh/view?usp=sharing)
 
 This document contains the following details:
 - Description of the Topology
@@ -208,13 +210,38 @@ SSH into the control node and follow the steps below:
   - curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
   - Next, copy the [Filebeat config](https://drive.google.com/file/d/1ual8JzBz19v3mt29zC_AsKXyVCLuPP_2/view?usp=sharing_) file to /etc/ansible
 
-  - Then update the *_filebeat-config.yml_* file to include the *_ELK private IP 10.1.0.4 from root by typing the following command: `nano /etc/ansible/filebeat-config.yml`
+  - Then update the *_filebeat-config.yml_* file to include the *_ELK private IP 10.1.0.4_* from root by typing the following command: `nano /etc/ansible/filebeat-config.yml`
   
-  - Now run the playbook using the following command: `ansible-playbook filebeat-playbook.yml` and then go to the [kibana](http://157.56.166.8:5601//app/kibana) website > Logs > select option to Add log data > System logs > 5:Module Status > verify ncoming data on kibana to ensure that the installation was successful.
+  - Now run the playbook using the following command: `ansible-playbook filebeat-playbook.yml` and then go to the [kibana](http://157.56.166.8:5601//app/kibana) website > Logs > select option to Add log data > System logs > 5:Module Status > verify incoming data on kibana to ensure that the installation was successful.
+
+## For Metricbeat
+
+- You need to download metricbeat playbook by using the following command:
+
+  - `curl -L -O https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/files/metricbeat-config.yml`
   
-- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+  - Next, copy the [Metricbeat Config](https://drive.google.com/file/d/1z8jfHl7Jdy_5upxaoSPv7q9IdxH0XpNh/view?usp=sharing) file to /etc/ansible
+
+  - Then update the *_metricbeat-config.yml_* to include the *_ELK private IP 10.1.0.4_* from root by typing the following command: `nano /etc/ansible/metricbeat-config.yml`
+
+  - Now run the playbook using the following command: `ansible-playbook metricbeat-playbook.yml` and then go to the [kibana](http://157.56.166.8:5601//app/kibana) website > Logs > select option to Add Metric data > Docker Metrics > 5:Module Status > verify incoming data on kibana to ensure that the installation was successful.
+
+- Answer the following questions to fill in the blanks:
+
+- Which file is the playbook? 
+  - For the Ansible, create [My-Playbook](https://drive.google.com/file/d/15ZrX9j-Uktai8H76tbGj87pxZoyUqCQQ/view?usp=sharing)
+  - For Metricbeat, creat [Metricbeat Playbook](https://drive.google.com/file/d/1oKPTBp19XYLJAHs_uChDH0Inlp1EnXt0/view?usp=sharing)
+  - For Filebeat, creat [Filebeat Playbook](https://drive.google.com/file/d/1sz3g4Gtm9gEMovYkp3v6wPdYddnp6eXV/view?usp=sharing)
+- Where do you copy it?
+  - /etc/ansible
+
+- Which file do you update to make Ansible run the playbook on a specific machine? 
 
   - *_/etc/ansible/hosts file (IP of the VM)._*
+
+- How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+  
+  - Within the /etc/ansible/hosts file, there are two groups. One is webservers which holds the IP addresses of Web1, Web2, and Web3. The other group is elk. it is noted to install Filebeat on the machines under the webservers group and ELK on the elk machine.  
 
 - Which URL do you navigate to in order to check that the ELK server is running?
    
