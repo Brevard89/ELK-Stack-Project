@@ -11,7 +11,7 @@ The files in this repository were used to configure the network depicted below.
 
 https://drive.google.com/file/d/1bMkHIdD64FSudHU-GLnt7W5sSXhdjwtO/view?usp=sharing()
 
-Ansible/![ELK-Stack-Project1 drawio html](https://user-images.githubusercontent.com/89888435/146475624-8955c9f4-e6fd-42eb-8d66-42c3729a0987.png)
+![ELK-Stack-Project1 drawio html](https://user-images.githubusercontent.com/89888435/146475624-8955c9f4-e6fd-42eb-8d66-42c3729a0987.png)
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the **_config and yml_** file may be used to install only certain pieces of it, such as Filebeat.
