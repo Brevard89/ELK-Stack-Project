@@ -46,7 +46,7 @@ Load balancing ensures that the application will be highly **_available and reli
 
   - What is the advantage of a jump box?
   
-    - *_The advantage of a Jump Box is that is prevents VM's in the Azure environment from being exposed publicly by restricting public IP Addresses to only the Jump Box while allowing traffic to flow to backend servers downstream._*
+    - *_The advantage of a Jump Box is that it prevents VM's in the Azure environment from being exposed publicly by restricting public IP Addresses to only the Jump Box while allowing traffic to flow to backend servers downstream._*
 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the *_network_* and *_system logs_*.
